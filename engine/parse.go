@@ -45,6 +45,11 @@ func parseRestAPI(s string) (*url.URL, error) {
 	}
 }
 
+// ParseDevice valid to pass an empty string and 0
+func ParseDevice(s string, mtu uint32) (device.Device, error) {
+	return parseDevice(s, mtu)
+}
+
 func parseDevice(s string, mtu uint32) (device.Device, error) {
 	if !strings.Contains(s, "://") {
 		s = fmt.Sprintf("%s://%s", tun.Driver /* default driver */, s)
